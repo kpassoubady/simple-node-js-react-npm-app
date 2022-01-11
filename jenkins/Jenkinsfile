@@ -3,6 +3,7 @@ pipeline {
         docker {
             image 'node:lts-buster-slim'
             args '-p 3000:3000'
+            args '-u root:root'
         }
     }
     environment {
@@ -12,8 +13,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'which npm'
-                sh '''chown -R 995:993 "/usr/local/bin/npm"'''
-                sh 'npm install'
+                sh 'mkdir cache'
+                sh 'npm install --cache=".cache"'
             }
         }
         stage('Test') {
