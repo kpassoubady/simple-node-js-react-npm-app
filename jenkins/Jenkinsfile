@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'which npm'
-                //sh '''chown -R 995:993 "./npm"'''
+                sh '''chown -R 995:993 "/usr/local/bin/npm"'''
                 sh 'npm install'
             }
         }
