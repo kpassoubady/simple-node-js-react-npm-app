@@ -14,7 +14,8 @@ pipeline {
             steps {
                 sh 'which npm'
                 sh 'mkdir cache'
-                sh 'npm install --cache=".cache"'
+                sh 'npm cache clean --force'
+                sh 'npm install --cache="./cache"'
             }
         }
         stage('Test') {
