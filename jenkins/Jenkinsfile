@@ -13,7 +13,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'which npm'
-                sh 'mkdir cache'
                 sh 'npm cache clean --force'
                 sh 'npm install --cache="./cache"'
             }
